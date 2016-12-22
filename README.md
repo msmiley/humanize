@@ -1,7 +1,12 @@
 # Humanize
 
-Go package to convert machine-readables to human-readables.
+Go package to convert machine-readables to human-readables
 
+```go
+import (
+  "github.com/msmiley/humanize"
+)
+```
 
 ## Commas
 
