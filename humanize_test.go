@@ -1,6 +1,10 @@
 package humanize
 
-import "testing"
+import (
+	"testing"
+	"time"
+)
+
 
 func TestAddCommas(t *testing.T) {
 	actual := AddCommas(1234)
@@ -52,6 +56,14 @@ func TestHexDump(t *testing.T) {
 	actual := HexDump(b)
 	expected := `00000  02 03 04 05 06 36 2B 17  02 03 06 08 04 07 08 41  .....6+.  .......A
 00016  07 2B 04 03 07 58 40 2D  EA                       .+...X@-  .       ` + "\n"
+	if expected != actual {
+		t.Errorf("expected %s got %s", expected, actual)
+	}
+}
+
+func TestISO8601ms(t *testing.T) {
+	actual := ISO8601ms(time.Date(2009, time.November, 10, 23, 1, 2, 3000000, time.UTC))
+	expected := "2009-11-10T23:01:02.003Z"
 	if expected != actual {
 		t.Errorf("expected %s got %s", expected, actual)
 	}

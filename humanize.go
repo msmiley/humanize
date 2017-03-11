@@ -6,6 +6,7 @@ import (
 	"math"
 	"bytes"
 	"fmt"
+	"time"
 )
 
 // Regex for peeling off groups of 3 digits from the end of a string
@@ -114,4 +115,13 @@ func HexDump(slice []byte) string {
 	}
 
 	return ret.String()
+}
+
+//
+// ISO8601ms renders the given Time as an ISO8601 string with millisecond resolution.
+// There is no direct method in time.Time for this particular format, so this
+// function hides the odd format string used by golang.
+//
+func ISO8601ms(t time.Time) string {
+	return t.Format("2006-01-02T15:04:05.000Z07:00")
 }
